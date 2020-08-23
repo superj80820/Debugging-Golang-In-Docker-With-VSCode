@@ -1,0 +1,12 @@
+version: "3.5"
+
+services:
+  server:
+    build: .
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - 8080:8080
+      - 6379:6379
+    entrypoint: dlv debug --headless --listen=:6379 --log --api-version=2
